@@ -8,6 +8,8 @@ const { generateToken } = require('./generateToken');
 const { authToken } = require('./authToken');
 const { validateName } = require('./validateName');
 const { validateAge } = require('./validateAge');
+const { validateHasTalk } = require('./validateHasTalk');
+const { validationsTalk } = require('./validationsTalk');
 
 const app = express();
 app.use(bodyParser.json());
@@ -42,7 +44,15 @@ app.post('/login', async (req, res) => {
   return res.status(200).json({ token: generateToken() });
 });
 
-app.post('/talker', authToken, validateName, validateAge);
+app.post('/talker',
+ authToken,
+ validateName,
+ validateAge,
+ validateHasTalk,
+ validationsTalk, 
+ (req, res) => {
+  res.status(201);
+ });
 
 app.listen(PORT, () => {
   console.log('Online');
