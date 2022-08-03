@@ -6,6 +6,7 @@ const { findTalkerById } = require('./findTalkerById');
 // const { validatePassword } = require('./validatePassword');
 const { generateToken } = require('./generateToken');
 const { authToken } = require('./authToken');
+const { authName } = require('./authName');
 
 const app = express();
 app.use(bodyParser.json());
@@ -40,7 +41,7 @@ app.post('/login', async (req, res) => {
   return res.status(200).json({ token: generateToken() });
 });
 
-app.post('/talker', authToken);
+app.post('/talker', authToken, authName);
 
 app.listen(PORT, () => {
   console.log('Online');
