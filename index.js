@@ -10,6 +10,7 @@ const { validateName } = require('./validateName');
 const { validateAge } = require('./validateAge');
 const { validateHasTalk } = require('./validateHasTalk');
 const { validationsTalk } = require('./validationsTalk');
+const { createTalker } = require('./createTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -50,9 +51,7 @@ app.post('/talker',
  validateAge,
  validateHasTalk,
  validationsTalk, 
- (req, res) => {
-  res.status(201);
- });
+ createTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
