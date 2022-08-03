@@ -1,4 +1,4 @@
-const authName = (req, res, next) => {
+const validateName = (req, res, next) => {
     try {
         const { name } = req.body;
         if (!name) {
@@ -13,4 +13,4 @@ const authName = (req, res, next) => {
        }    
 };
 
-module.exports = { authName };
+module.exports = { validateName };
