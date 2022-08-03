@@ -53,6 +53,13 @@ app.post('/talker',
  validationsTalk, 
  createTalker);
 
+app.put('/talker/:id',
+ authToken,
+ validateName,
+ validateAge,
+ validateHasTalk,
+ validationsTalk);
+
 app.listen(PORT, () => {
   console.log('Online');
 });
