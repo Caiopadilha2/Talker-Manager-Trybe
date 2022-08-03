@@ -11,6 +11,7 @@ const { validateAge } = require('./validateAge');
 const { validateHasTalk } = require('./validateHasTalk');
 const { validationsTalk } = require('./validationsTalk');
 const { createTalker } = require('./createTalker');
+const { editTalker } = require('./editTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -58,7 +59,8 @@ app.put('/talker/:id',
  validateName,
  validateAge,
  validateHasTalk,
- validationsTalk);
+ validationsTalk,
+ editTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
