@@ -14,6 +14,7 @@ const { createTalker } = require('./createTalker');
 const { editTalker } = require('./editTalker');
 const { deleteTalker } = require('./deleteTalker');
 const { validateLogin } = require('./validateLogin');
+const { searchTalker } = require('./searchTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -27,6 +28,10 @@ app.get('/', (_request, response) => {
 });
 
 app.get('/talker', readTalkers);
+
+app.get('/talker/search',
+ authToken,
+ searchTalker);
 
 app.get('/talker/:id', findTalkerById);
 
