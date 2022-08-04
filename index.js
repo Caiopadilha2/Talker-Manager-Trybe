@@ -12,6 +12,7 @@ const { validateHasTalk } = require('./validateHasTalk');
 const { validationsTalk } = require('./validationsTalk');
 const { createTalker } = require('./createTalker');
 const { editTalker } = require('./editTalker');
+const { deleteTalker } = require('./deleteTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -61,6 +62,10 @@ app.put('/talker/:id',
  validateHasTalk,
  validationsTalk,
  editTalker);
+
+app.delete('/talker/:id', 
+authToken,
+deleteTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
